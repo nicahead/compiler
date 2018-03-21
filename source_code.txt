@@ -1,0 +1,88 @@
+begin
+r=25;
+setcolor(1,0.5,0);  //设置颜色
+//字母C
+angle=250;
+while(angle!=360)
+{
+	x=r*cos(180-angle)-45;
+	y=r*sin(180-angle);
+	point(x,y);  //画点
+	angle=angle+1;
+}
+angle=1;
+while(angle!=110)
+{
+	x=r*cos(180-angle)-45;
+	y=r*sin(180-angle);
+	point(x,y);  //画点
+	angle=angle+1;
+}
+//字母P
+angle=85;
+setcolor(0.5,0.5,1);  //设置颜色
+while(angle!=275)
+{
+	x=r*cos(180-angle)+45;
+	y=r*sin(180-angle);
+	point(x,y);  //画点
+	angle=angle+1;
+}
+setlinewidth(4);
+line(42,25,42,-60);
+delay(2);
+reset;
+//心形线
+a=50;
+angle=0;
+setcolor(1,0,0);  //设置颜色
+while(angle!=360&&a>20)
+{
+	r=a*(1-sin(angle));
+	x=r*cos(angle);
+	y=r*sin(angle);
+	point(x,y);  //画点
+	angle=angle+1;
+}
+if(angle>=360)
+{
+	setwindowsize(200); 
+	delay(0.5);
+	rotate(360);   //旋转
+	rotate(-360);
+	delay(0.5);
+	translate(0,80);   //向上平移
+	delay(0.5);
+	translate(0,-40); 
+	setcolor(0,1,0);
+	x=78;
+        //抛物线
+	while(x<=182)
+	{
+		y=0.04*(x-130)*(x-130)-100;
+		point(x,y);  //画点
+		x=x+0.7;
+	}
+	setcolor(0,0,1);
+	setlinewidth(4);
+	line(-120,10,-140,10);
+	line(-130,10,-130,-100);
+	line(-113,-100,-147,-100);
+}
+//循环放大与缩小
+i=0;
+while(i<8)
+{
+	if(i%2==1)
+	{
+		scale(2,2);
+		delay(0.5);
+	}
+	else
+	{
+		scale(0.5,0.5);
+		delay(0.5);
+	}
+	i=i+1;
+}
+end
